@@ -12,7 +12,7 @@ import java.util.stream.LongStream;
 
 public class Application {
 
-    private static final int FIXTURE_COUNT = 10_000;
+    private static final int FIXTURE_COUNT = 50_000;
     private static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
@@ -23,11 +23,11 @@ public class Application {
         FavoriteRepository favoriteRepository = new JdbcFavoriteRepository(connection);
 
         LongStream.rangeClosed(1, FIXTURE_COUNT)
-                .mapToObj(l -> new Member(l, "avatar-" + l, "nickname", "password-" + l))
+                .mapToObj(l -> new Member(l, "avatar-" + l, "n-" + l, "password-" + l))
                 .forEach(memberRepository::save);
 
         LongStream.rangeClosed(1, FIXTURE_COUNT)
-                .mapToObj(l -> new Article(l, "category", "contents-" + l, 10_000, (long) (RANDOM.nextInt(FIXTURE_COUNT) + 1), LocalDateTime.now(), LocalDateTime.now()))
+                .mapToObj(l -> new Article(l, "category", "contents-" + l, (int) l, (long) (RANDOM.nextInt(FIXTURE_COUNT) + 1), LocalDateTime.now(), LocalDateTime.now()))
                 .forEach(articleRepository::save);
 
         LongStream.rangeClosed(1, FIXTURE_COUNT)
