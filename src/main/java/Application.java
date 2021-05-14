@@ -17,6 +17,7 @@ public class Application {
 
     public static void main(String[] args) {
         Connection connection = ConnectionFactory.create();
+
         MemberRepository memberRepository = new JdbcMemberRepository(connection);
         ArticleRepository articleRepository = new JdbcArticleRepository(connection);
         FavoriteRepository favoriteRepository = new JdbcFavoriteRepository(connection);
