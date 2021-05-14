@@ -12,7 +12,7 @@ import java.util.stream.LongStream;
 
 public class Application {
 
-    private static final int FIXTURE_COUNT = 100_000;
+    private static final int FIXTURE_COUNT = 10_000;
     private static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
